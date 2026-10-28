@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Bites Cafe - Owner Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div class="logo-icon">🔐</div>
+        <div class="brand-text">
+          <h1>Urban Bites Cafe</h1>
+          <span class="tagline">Owner Dashboard</span>
+        </div>
+      </div>
+      <a href="index.html" class="btn-admin-link">← Back to Menu</a>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+    
+    <!-- Login Form Section (Initial State) -->
+    <section id="login-section" style="max-width: 400px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 16px; border: 1px solid var(--border-light);">
+      <h2 style="margin-bottom: 8px; font-size: 1.4rem;">Owner Login</h2>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Enter your admin credentials to manage menu.</p>
+      
+      <form id="admin-login-form">
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 5px;">Username</label>
+          <input type="text" id="admin-username" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border-light);">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 5px;">Password</label>
+          <input type="password" id="admin-password" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border-light);">
+        </div>
+        <button type="submit" style="width: 100%; background: var(--brand-orange); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer;">
+          Login to Dashboard
+        </button>
+      </form>
+    </section>
+
+    <!-- Admin Dashboard (Shown after successful login) -->
+    <section id="dashboard-section" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h2>Manage Menu Items</h2>
+        <button id="btn-logout" style="background: #e74c3c; color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer;">Logout</button>
+      </div>
+
+      <!-- Add New Item Form -->
+      <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--border-light); margin-bottom: 30px;">
+        <h3 style="margin-bottom: 15px;">+ Add New Menu Item</h3>
+        <form id="add-item-form" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+          <input type="text" id="item-name" placeholder="Item Name (e.g. Cheese Garlic Bread)" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-light);">
+          <select id="item-category" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-light);">
+            <option value="Burgers">Burgers</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Pasta">Pasta</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Beverages">Beverages</option>
+          </select>
+          <input type="number" id="item-price" placeholder="Price (₹)" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-light);">
+          <input type="url" id="item-image" placeholder="Image URL (Unsplash link)" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-light);">
+          <input type="text" id="item-desc" placeholder="Description" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-light); grid-column: 1 / -1;">
+          <button type="submit" style="background: var(--text-primary); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; grid-column: 1 / -1;">Save Item to Menu</button>
+        </form>
+      </div>
+
+      <!-- Existing Menu Table -->
+      <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--border-light);">
+        <h3 style="margin-bottom: 15px;">Current Menu Items</h3>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-light);">
+                <th style="padding: 10px;">Item</th>
+                <th style="padding: 10px;">Category</th>
+                <th style="padding: 10px;">Price</th>
+                <th style="padding: 10px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-menu-table">
+              <!-- Admin JS will dynamically render menu rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- JS Links -->
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

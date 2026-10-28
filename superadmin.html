@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Admin - Urban Bites Cafe Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div class="logo-icon">⚡</div>
+        <div class="brand-text">
+          <h1>Super Admin Panel</h1>
+          <span class="tagline">Platform Control Center</span>
+        </div>
+      </div>
+      <a href="index.html" class="btn-admin-link">← Public Menu</a>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      
+      <!-- QR Code Generator Card -->
+      <div style="background: #fff; padding: 25px; border-radius: 16px; border: 1px solid var(--border-light); text-align: center;">
+        <h3 style="margin-bottom: 10px;">Generate Table QR Code</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">
+          Generate high-resolution printable QR code for cafe tables.
+        </p>
+
+        <div style="margin-bottom: 15px;">
+          <input type="url" id="qr-target-url" value="https://urbanbitescafe.com" placeholder="Enter Deployed Menu URL" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border-light); font-size: 0.9rem;">
+        </div>
+
+        <button id="btn-generate-qr" style="width: 100%; background: var(--brand-orange); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 20px;">
+          Generate QR Code
+        </button>
+
+        <div id="qr-display-box" style="padding: 15px; background: var(--bg-main); border-radius: 12px; display: inline-block;">
+          <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://urbanbitescafe.com" alt="Cafe QR Code" style="width: 180px; height: 180px; border-radius: 8px;">
+        </div>
+      </div>
+
+      <!-- Managed Restaurants List -->
+      <div style="background: #fff; padding: 25px; border-radius: 16px; border: 1px solid var(--border-light);">
+        <h3 style="margin-bottom: 10px;">Platform Accounts</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">
+          Active restaurant instances under management.
+        </p>
+
+        <div style="border: 1px solid var(--border-light); border-radius: 10px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h4 style="font-size: 1rem;">Urban Bites Cafe</h4>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Connaught Place, New Delhi</span>
+          </div>
+          <span style="background: #e6fffa; color: #047857; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700;">Active</span>
+        </div>
+
+        <button onclick="alert('Multi-tenant enterprise account onboarding will connect here.')" style="width: 100%; background: var(--text-primary); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer;">
+          + Onboard New Restaurant
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    document.getElementById('btn-generate-qr').addEventListener('click', () => {
+      const url = document.getElementById('qr-target-url').value.trim();
+      if(!url) {
+        alert('Please enter a valid URL');
+        return;
+      }
+      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(url)}`;
+      document.getElementById('qr-image').src = qrApiUrl;
+    });
+  </script>
+</body>
+</html>

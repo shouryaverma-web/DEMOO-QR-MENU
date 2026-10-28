@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Bites Cafe - Digital QR Menu</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="top-bar">
+    📍 Connaught Place, New Delhi | 🕒 Open Today: 11:00 AM – 11:00 PM
+  </div>
+
+  <!-- Header & Brand Logo -->
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div class="logo-icon">🍔</div>
+        <div class="brand-text">
+          <h1>Urban Bites Cafe</h1>
+          <span class="tagline">Modern Casual Dining</span>
+        </div>
+      </div>
+      <a href="admin.html" class="btn-admin-link">Owner Login</a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-section">
+    <div class="container">
+      <h2>Delicious Food, Instant WhatsApp Ordering</h2>
+      <p>Select your favorite items from our menu and place your order directly on WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- Category Filter Bar -->
+  <nav class="category-nav">
+    <div class="container category-container">
+      <button class="cat-btn active" data-category="all">All Items</button>
+      <button class="cat-btn" data-category="Burgers">🍔 Burgers</button>
+      <button class="cat-btn" data-category="Pizza">🍕 Pizza</button>
+      <button class="cat-btn" data-category="Pasta">🍝 Pasta</button>
+      <button class="cat-btn" data-category="Snacks">🍟 Snacks</button>
+      <button class="cat-btn" data-category="Beverages">🥤 Beverages</button>
+    </div>
+  </nav>
+
+  <!-- Main Content Layout (Menu + Cart) -->
+  <main class="container main-layout">
+    <!-- Menu Grid Section -->
+    <section class="menu-section">
+      <h3 class="section-title" id="current-category-title">Full Menu</h3>
+      <div class="menu-grid" id="menu-grid">
+        <!-- Javascript dynamic food items yahan render karega -->
+      </div>
+    </section>
+
+    <!-- Sidebar Cart Section (Desktop) -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <h3>Your Order</h3>
+        <span class="cart-count-badge" id="cart-count">0 items</span>
+      </div>
+
+      <div class="cart-items" id="cart-items-list">
+        <!-- Cart Items JavaScript se yahan aayenge -->
+        <p class="empty-cart-msg">Your cart is empty. Add items from menu to place order!</p>
+      </div>
+
+      <div class="cart-footer">
+        <div class="total-row">
+          <span>Total Bill:</span>
+          <strong id="cart-total-price">₹0</strong>
+        </div>
+        <button class="btn-whatsapp" id="btn-whatsapp-order" disabled>
+          🟢 Order on WhatsApp
+        </button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Floating Mobile Cart Button -->
+  <div class="mobile-cart-bar" id="mobile-cart-bar">
+    <div class="mobile-cart-info">
+      <span id="mobile-cart-count">0 Items</span>
+      <strong id="mobile-cart-total">₹0</strong>
+    </div>
+    <button class="btn-mobile-view-cart" onclick="document.getElementById('cart-sidebar').scrollIntoView({behavior: 'smooth'})">
+      View Order 🛒
+    </button>
+  </div>
+<!-- JavaScript Files -->
+  <script src="js/config.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
